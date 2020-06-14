@@ -11,50 +11,62 @@
 // THEN the text for that event is   in local storage
 // WHEN I refresh the page
 // THEN the saved events persist
-$(document).ready(function() {
-hours = [9,10,11,12,1,2,3,4,5];
-hoursIndex = 0;
-hoursObject = [ {"twelveHours": "9AM", "twentyFourHours":  0900},
-{"twelveHours": "10AM", "twentyFourHours":  1000},
-{"twelveHours": "11AM", "twentyFourHours":  1100},
-{"twelveHours": "12PM", "twentyFourHours":  1200},
-{"twelveHours": "1PM", "twentyFourHours":  1300},
-{"twelveHours": "2PM", "twentyFourHours":  1400},
-{"twelveHours": "3PM", "twentyFourHours":  1500},
-{"twelveHours": "4PM", "twentyFourHours":  1600},
-{"twelveHours": "5PM", "twentyFourHours":  1700},
+$(document).ready(function () {
+  hours = [9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  hoursIndex = 0;
+  hoursObject = [
+    { twelveHours: "9AM", twentyFourHours: "9" },
+    { twelveHours: "10AM", twentyFourHours: "10" },
+    { twelveHours: "11AM", twentyFourHours: "11" },
+    { twelveHours: "12PM", twentyFourHours: "12" },
+    { twelveHours: "1PM", twentyFourHours: "13" },
+    { twelveHours: "2PM", twentyFourHours: "14" },
+    { twelveHours: "3PM", twentyFourHours: "15" },
+    { twelveHours: "4PM", twentyFourHours: "16" },
+    { twelveHours: "5PM", twentyFourHours: "17" },
+    { twelveHours: "6PM", twentyFourHours: "18" },
+    { twelveHours: "7PMM", twentyFourHours: "19" },
+    { twelveHours: "8PM", twentyFourHours: "20" },
+    { twelveHours: "9PM", twentyFourHours: "21" },
+    { twelveHours: "10PM", twentyFourHours: "22" },
+    { twelveHours: "11PM", twentyFourHours: "23" },
+    { twelveHours: "12PM", twentyFourHours: "24" },
+  ];
 
-]
-
-// var currentTime = moment(moment));
-
-var newRow = $("<div>").addClass("row");
-$(".container").append(newRow);
-
-
-
-function newTimeRow ()    {
-    var col1 = $("<div>").addClass("col-1 hour").text(hoursObject[i].twelveHours);
-    var col2 = $("<text area>").addClass("col-10 past present future");
-    var col3 = $("<button>").addClass("col-1 saveBtn").html("<i class='fas fa-save'></i>");
-    $(".row").append(col1);
-    $(".row").append(col2);
-    $(".row").append(col3);
+function newTimeRow() {
+    var newRow = $("<div>").addClass("row");
+    var col1 = $("<div>")
+      .addClass("col-sm-1 hour")
+      .text(hoursObject[hoursIndex].twelveHours);
+    var col2 = $("<textarea>").addClass("col-sm-10");
+    console.log(col2);
+    var col3 = $("<button>")
+      .addClass("col-sm-1 saveBtn")
+      .html("<i class='fas fa-save'></i>");
+    newRow.append(col1).append(col2).append(col3);
+    $(".container").append(newRow);
     hoursIndex++;
     console.log(newTimeRow());
-}
+  if (hoursObject[hoursIndex].twentyFourHours === moment().format('H')){
+    col2.addClass("present");
+  }else if (hoursObject[hoursIndex].twentyFourHours > moment().format('H')){
+    col2.addClass("future");
+  }else {
+    col2.addClass("past");
+  };
+};
+
+  
+  
+  for (var i = 0; i < 9; i++) {
+    newTimeRow();
+  }
 
 
-for (var i = 0; i < 9; i++)   {
-    newTimeRow;
-}
+  $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
+});
 
-})
-
-
-
-
-
+$("#saveBtn").on("click",)
 // classes found in .css folder
 // jumbotron, description, time-block, .row, .hour, .past, .present, .future, .saveBtn, .saveBtn i:hover
 
@@ -93,7 +105,6 @@ for (var i = 0; i < 9; i++)   {
 //  }
 //  scheduleApperance();
 
-
 //  function colorChange() {
 //      var a
 //  }
@@ -101,7 +112,7 @@ for (var i = 0; i < 9; i++)   {
 // //  function colochange() {
 //     var colNine = document.querySelector("color-change");
 //     // if colNine < time currenttime, then background color is red; && disable submit button
-//     // else if colNine === currenttime, background color is grey; save to local storage hwen clicked 
+//     // else if colNine === currenttime, background color is grey; save to local storage hwen clicked
 //     // else if colNine > current time, background color is green; save to local storage when clicked.
 
-// // Are we creating <divs> to be dynamically or are we hard-coding everything. 
+// // Are we creating <divs> to be dynamically or are we hard-coding everything.
