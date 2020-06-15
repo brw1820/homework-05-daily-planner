@@ -12,7 +12,6 @@
 // WHEN I refresh the page
 // THEN the saved events persist
 $(document).ready(function () {
-  hours = [9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   hoursIndex = 0;
   hoursObject = [
     { twelveHours: "9AM", twentyFourHours: "9" },
@@ -40,11 +39,13 @@ function newTimeRow() {
       .text(hoursObject[hoursIndex].twelveHours);
       console.log(hoursObject[hoursIndex].twelveHours);
     var col2 = $("<textarea>").addClass("col-sm-10");
-    console.log(col2);
+    // console.log(col2);
     var col3 = $("<button>")
       .addClass("col-sm-1 saveBtn")
       .html("<i class='fas fa-save'></i>");
-    newRow.append(col1).append(col2).append(col3);
+    newRow.append(col1);
+    newRow.append(col2);
+    newRow.append(col3);
     $(".container").append(newRow);
     hoursIndex++;
     // console.log(newTimeRow());
@@ -54,6 +55,7 @@ function newTimeRow() {
     col2.addClass("future");
   }else {
     col2.addClass("past");
+    console.log(hoursObject[hoursIndex].twentyFourHours);
   };
 };
 
@@ -61,7 +63,8 @@ function newTimeRow() {
   
   for (var i = 0; i < 17; i++) {
     newTimeRow();
-  } 
+  }
+
   
 });
 

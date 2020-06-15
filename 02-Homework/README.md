@@ -1,46 +1,56 @@
-        # 05 Third-Party APIs: Work Day Scheduler
+# Refactoring an HTML File Following Accessibility Standards.
 
-Create a simple calendar application that allows the user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+## The Repository
 
-You'll need to use the [Moment.js](https://momentjs.com/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
+This repository consists of a simple HTML file that has created a randomizing password generator online for increased password security.
 
-## User Story
 
-```
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
-```
+## Table of Contents 
 
-## Acceptance Criteria
+* [Installation](#installation)
+* [Usage](#usage)
+* [Credits](#credits)
+* [MIT License](#mit_license)
 
-```
-GIVEN I am using a daily planner to create a schedule
-WHEN I open the planner
-THEN the current day is displayed at the top of the calendar
-WHEN I scroll down
-THEN I am presented with timeblocks for standard business hours
-WHEN I view the timeblocks for that day
-THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-WHEN I click into a timeblock
-THEN I can enter an event
-WHEN I click the save button for that timeblock
-THEN the text for that event is saved in local storage
-WHEN I refresh the page
-THEN the saved events persist
-```
+## Installation
 
-The following animation demonstrates the application functionality:
+Clone the repository found at:
 
-![day planner demo](./Assets/05-third-party-apis-homework-demo.gif)
+https://github.com/brw1820/homework-05-daily-planner/
 
-## Review
+https://brw1820.github.io/homework-05-daily-planner/
 
-You are required to submit the following for review:
+Proceed to run the index.html file in your browser.  Once loaded, you input activities into your schedule and save them to local storage by hitting the floppy disk button.
 
-* The URL of the deployed application.
+## Usage 
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+This HTML file provides a work day scheduler to the user.
+![Example of Daily Planner](./Assets/scheduler.PNG)
 
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+## Credits
+
+The provided work was a solo project created as homework for Georgia Tech, Fullstack Flex program.
+
+## License
+
+MIT License
+
+Copyright (c) [2020] [Brian R. Warner]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
