@@ -12,104 +12,91 @@
 // WHEN I refresh the page
 // THEN the saved events persist
 $(document).ready(function () {
-  hoursIndex = 0;
-  hoursObject = [
-    { twelveHours: "9AM", twentyFourHours: "9" },
-    { twelveHours: "10AM", twentyFourHours: "10" },
-    { twelveHours: "11AM", twentyFourHours: "11" },
-    { twelveHours: "12PM", twentyFourHours: "12" },
-    { twelveHours: "1PM", twentyFourHours: "13" },
-    { twelveHours: "2PM", twentyFourHours: "14" },
-    { twelveHours: "3PM", twentyFourHours: "15" },
-    { twelveHours: "4PM", twentyFourHours: "16" },
-    { twelveHours: "5PM", twentyFourHours: "17" },
-    { twelveHours: "6PM", twentyFourHours: "18" },
-    { twelveHours: "7PM", twentyFourHours: "19" },
-    { twelveHours: "8PM", twentyFourHours: "20" },
-    { twelveHours: "9PM", twentyFourHours: "21" },
-    { twelveHours: "10PM", twentyFourHours: "22" },
-    { twelveHours: "11PM", twentyFourHours: "23" },
-    { twelveHours: "12AM", twentyFourHours: "24" },
-  ];
+    
+$("#currentDay").text(moment().format('MMMM Do YYYY'));
 
-function newTimeRow() {
+  hoursArray = [
+    { twelveHoursInput: "9AM", twentyFourInput: "9" },
+    { twelveHoursInput: "10AM", twentyFourInput: "10" },
+    { twelveHoursInput: "11AM", twentyFoursInput: "11" },
+    { twelveHoursInput: "12PM", twentyFourInput: "12" },
+    { twelveHoursInput: "1PM", twentyFourInput: "13" },
+    { twelveHoursInput: "2PM", twentyFourInput: "14" },
+    { twelveHoursInput: "3PM", twentyFourInput: "15" },
+    { twelveHoursInput: "4PM", twentyFourInput: "16" },
+    { twelveHoursInput: "5PM", twentyFourInput: "17" },
+    { twelveHoursInput: "6PM", twentyFourInput: "18" },
+    { twelveHoursInput: "7PM", twentyFourInput: "19" },
+    { twelveHoursInput: "8PM", twentyFourInput: "20" },
+    { twelveHoursInput: "9PM", twentyFourInput: "21" },
+    { twelveHoursInput: "10PM", twentyFourInput: "22" },
+    { twelveHoursInput: "11PM", twentyFourInput: "23" },
+    { twelveHoursInput: "12AM", twentyFourInput: "24" },
+  ];
+hours = 0;
+
+function newPlannerTimeRow() {
     var newRow = $("<div>").addClass("row");
     var col1 = $("<div>")
       .addClass("col-sm-1 hour")
-      .text(hoursObject[hoursIndex].twelveHours);
-      console.log(hoursObject[hoursIndex].twelveHours);
+      .text(hoursArray[hours].twelveHoursInput);
+    //   console.log(hoursArray[hours].twelveHoursInput);
     var col2 = $("<textarea>").addClass("col-sm-10");
     // console.log(col2);
-    var col3 = $("<button>")
+    var col3 = $("<button>").attr("data-time",hoursArray[hours].twentyFourInput)
       .addClass("col-sm-1 saveBtn")
       .html("<i class='fas fa-save'></i>");
     newRow.append(col1);
     newRow.append(col2);
     newRow.append(col3);
     $(".container").append(newRow);
-    hoursIndex++;
-    // console.log(newTimeRow());
-  if (hoursObject[hoursIndex].twentyFourHours === moment().format('H')){
-    col2.addClass("present");
-  }else if (hoursObject[hoursIndex].twentyFourHours > moment().format('H')){
+  if (hoursArray[hours].twentyFourInput > moment().format('H')){
     col2.addClass("future");
-  }else {
+    // console.log here
+  } else if (hoursArray[hours].twentyFourInput < moment().format('H')){
     col2.addClass("past");
-    console.log(hoursObject[hoursIndex].twentyFourHours);
+} else {
+    col2.addClass("present");
+    
   };
-};
+hours++;;}
 
-  $("#currentDay").text(moment().format('MMMM Do YYYY'));
+
   
-  for (var i = 0; i < 17; i++) {
-    newTimeRow();
+  for (var i = 0; i < hoursArray.length; i++) {
+    newPlannerTimeRow();
   }
 
-  
+  itemsArray=[];
+$(".container").on("click", ".saveBtn", function(event) {
+    event.preventDefault();
+    console.log($(this));
+    // var userData = $(this).val();
+    localStorage.setItem("data-time", this);
+    var finalData = JSON.parse(localStorage.getItem("data-time"));
+    console.log(finalData);
+    
+    // localStorage.setItem("userData", "value")
+    // var userData = JSON.stringify($(this));
+    // console.log(userData);
+
+
+//   new variable for input after "click" event listener.
+// Once the save button is clicked, it will save userData
+// Figure out how to grab the time slot
+// 
+
+
+
+
+
+
+//     var userData = ???.val
+//     ????.push
+// }this....sibling....
+})
+
 });
-
-
-// classes found in .css folder
-// jumbotron, description, time-block, .row, .hour, .past, .present, .future, .saveBtn, .saveBtn i:hover
-
-//  //Create array for times
-//  var hoursArray = ["8", "9", "10", "11", "12", "1", "2", "3", "4", "5", "6"];
-//  //   var hoursArrayIndex = 0;
-//  //   console.log(hoursArrayIndex);
-//  var calRowEl = $("<div>").addClass("row");
-//  var eventEl = $("<div>").addClass("col-10 textarea time-sensitive"); //style?
-//  var calHourColumnsEl = $("<div>").addClass("col-1 hour");
-//  var timeBlockEl = $("<div>").addClass("container time-block");
-//  var saveButtonColEl = $("<div>").addClass("col-1 display-icon saveBtn btn");
-//  saveButtonColEl.addClass("i fas fa-lock");
-//  //do I need to create <p> inside of event rows for text?
-//  //**Function definitions**//
-//  //Push time into rows
-//  //For loop for array of hours
-//  function scheduleApperance() {
-//    for (var i = 0; i < hoursArray.length; i++) {
-//      var calHours = hoursArray[i];
-//      console.log(calHours); //WORKS
-//      //Create calendar rows/columns w/ all other given CSS elements
-//      //Append calendar rows to the "time table" styling
-//      //Column for hours
-//      $(calRowEl).append(calHourColumnsEl);
-//      //Hour of day text inside column
-//      $(calHourColumnsEl).text(calHours);
-//      //Schedule events column
-//      $(calRowEl).append(eventEl);
-//      //The container
-//      $(timeBlockEl).append(calRowEl);
-//      $(".container").append(timeBlockEl);
-//      //Save button
-//      $(calRowEl).append(saveButtonColEl);
-//    }
-//  }
-//  scheduleApperance();
-
-//  function colorChange() {
-//      var a
-//  }
 
 // //  function colochange() {
 //     var colNine = document.querySelector("color-change");
@@ -118,3 +105,6 @@ function newTimeRow() {
 //     // else if colNine > current time, background color is green; save to local storage when clicked.
 
 // // Are we creating <divs> to be dynamically or are we hard-coding everything.
+
+
+// localStorage is an object / key-value pair
