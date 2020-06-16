@@ -41,7 +41,7 @@ function newPlannerTimeRow() {
       .addClass("col-sm-1 hour")
       .text(hoursArray[hours].twelveHoursInput);
     //   console.log(hoursArray[hours].twelveHoursInput);
-    var col2 = $("<textarea>").addClass("col-sm-10");
+    var col2 = $("<textarea>").addClass(`text-${hoursArray[hours].twentyFourInput} col-sm-10`);
     // console.log(col2);
     var col3 = $("<button>").attr("data-time",hoursArray[hours].twentyFourInput)
       .addClass("col-sm-1 saveBtn")
@@ -70,11 +70,13 @@ hours++;;}
   itemsArray=[];
 $(".container").on("click", ".saveBtn", function(event) {
     event.preventDefault();
-    console.log($(this));
-    // var userData = $(this).val();
-    localStorage.setItem("data-time", this);
-    var finalData = JSON.parse(localStorage.getItem("data-time"));
-    console.log(finalData);
+    console.log(event.target);
+    console.log(event.target.attributes[0]);
+    (`text-${event.target.attributes[0]}`);
+    // a>").val();
+    // localStorage.setItem("data-time", this);
+    // var finalData = JSON.parse(localStorage.getItem("data-time"));
+    // console.log(finalData);
     
     // localStorage.setItem("userData", "value")
     // var userData = JSON.stringify($(this));
