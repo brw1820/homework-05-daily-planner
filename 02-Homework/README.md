@@ -2,7 +2,7 @@
 
 ## The Repository
 
-This repository consists of a simple HTML file that has created a randomizing password generator online for increased password security.
+This repository consists of a simple HTML file that has created a dynamic daily planner.
 
 
 ## Table of Contents 
